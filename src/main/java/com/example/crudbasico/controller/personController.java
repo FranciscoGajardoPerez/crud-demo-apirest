@@ -21,12 +21,23 @@ public class personController {
 
 
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody PersonEntity person){
+    public ResponseEntity<String> save(@RequestBody PersonEntity person) {
         return new ResponseEntity(service.save(person), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonDTO>> listPerson(){
-        return new ResponseEntity<>(service.personList(),HttpStatus.OK);
+    public ResponseEntity<List<PersonDTO>> listPerson() {
+        return new ResponseEntity<>(service.personList(), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable String id) {
+        return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> update(@PathVariable String id,@RequestBody PersonEntity person){
+        return new ResponseEntity<>(service.update(id,person),HttpStatus.OK);
+    }
+
 }

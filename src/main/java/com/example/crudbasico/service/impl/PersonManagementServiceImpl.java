@@ -10,4 +10,9 @@ public interface PersonManagementServiceImpl {
     String save(PersonEntity person);
 
     List<PersonDTO> personList();
+
+    String delete(String id);
+
+    String update(String id,PersonEntity person);
+
 }
